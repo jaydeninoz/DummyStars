@@ -17,13 +17,15 @@ require './includes/form_handlers/login_handler.php';
 </head>
 <body>
     <div class="wrapper">
-        <div class="login_header">
-            <h1>Dummy Stars</h1>
-            Login or Sign up below
-        </div>
+        
 
         <div class="login_box">
+            <div class="login_header">
+                <h1>Dummy Stars</h1>
+                Login or Sign up below
+            </div>
             <form action="register.php" method="post">
+                <br>
                 <input type="email" name="log_email" placeholder="Email Address" value="<?php 
                 if (isset($_SESSION['reg_email'])) {
                     echo $_SESSION['reg_email'];
@@ -32,12 +34,14 @@ require './includes/form_handlers/login_handler.php';
                 <br>
                 <input type="password" name="log_password" placeholder="Password">
                 <br>
+                <?php if(in_array("Email or password was incorrect<br>", $error_array)) echo "Email or password was incorrect<br>"; ?>
                 <input type="submit" name="login_button" value="Login">
                 <br>
-                <?php if(in_array("Email or password was incorrect<br>", $error_array)) echo "Email or password was incorrect<br>"; ?>
+                
             </form>
 
             <form action="register.php" method="POST">
+                <br>
                 <input type="text" name="reg_fname" placeholder="First Name"  value="<?php 
                 if (isset($_SESSION['reg_fname'])) {
                     echo $_SESSION['reg_fname'];
